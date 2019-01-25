@@ -98,10 +98,59 @@ Assign 0 to the corresponding value(s) in f for d_min in d.
 Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
+
+outer = list_1
+medium_inner = list_2
+inner = list_3
 """
-f = 
 
 
+
+print('=============')
+
+print(d)
+
+print('=============')
+
+
+
+b = d.tolist()
+ls_d = []
+for lista_grande in b:
+  for lista_mediana in lista_grande:
+    for lista_pequeña in lista_mediana:
+      ls_d.append(lista_pequeña)
+
+print(ls_d)
+
+
+
+
+ls_f = []
+for e in ls_d:
+  if e > d_min and e < d_mean:
+    e = 25
+    ls_f.append(e)
+  elif e > d_mean and e < d_max:
+    e = 75
+    ls_f.append(e)
+
+  elif e == d_mean:
+    e = 50
+    ls_f.append(e)
+
+  elif e == d_min:
+    e = 0
+    ls_f.append(e)
+
+  elif e == d_max:
+    e = 100
+    ls_f.append(e)
+
+ls_f_array = np.asarray(ls_f)
+ls_final = ls_f_array.reshape(2,3,5)
+
+f = ls_final
 
 """
 #17. Print d and f. Do you have your expected f?
@@ -122,6 +171,12 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
        [[ 25.,  25.,  25.,  25., 100.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
+"""
+print(d)
+print(f)
+
+"""
+Si
 """
 
 
