@@ -26,20 +26,22 @@ Overall the project consists of a series of steps as outlined below.
 > 11. Generosity = The extent to which Generosity contributed to the calculation of the Happiness Score.
 > 12. Dystopia Residual = The extent to which Dystopia Residual contributed to the calculation of the Happiness Score.
 
-## --- STEP 0: Import Data -------- 
+# # Step 0 : Importing libraries and dataset
 
-## --- STEP 1: Data Acquisition -------- 
+# # Step 1 : Data Acquisition
 
-## --- STEP 2: Data Wrangling --------
+# # Step 2 : Data Wrangling
 
-## --- STEP 3: Data Analysis -------- 
+# # Step 3 : Data Wrangling
 
-## --- STEP 4: Reporting and Distribution -------- 
-#### Important determinant happinness
-#### Moderately important determinant happinness
-#### Not very important determinant happinness
+# # Step 4 : Data Reporting
+    #### Important determinant happinness
+    #### Moderately important determinant happinness
+    #### Not very important determinant happinness
+    
+# # Step 5 : Save clean CSV 
 
-## --- STEP 5: Automate -------- 
+# # Step 6 : Execute pipeline
 
 ---
 

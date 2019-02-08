@@ -1,18 +1,17 @@
 ## Pipelines Project 
 
 # # Step 0 : Importing libraries and dataset
-
 # Import libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Import our dataset
-data = pd.read_csv('./2015.csv')
-
 # # Step 1 : Data Acquisition
 
-def data_acquisition(data):
+def data_acquisition(filename):
+    
+    data = pd.read_csv(filename)
+
     print("Data Types :")
     print(data.dtypes)
     print("Check all data types of old and new variables are correct")    
@@ -26,14 +25,19 @@ def data_acquisition(data):
     print(data.head())
     print("============== ")
     return data
-    
+
 # # Step 2 : Data Wrangling
 
 def data_wrangling_null(data):
     # Find how prevalent missing values are in our data 
     null_cols = data.isnull().sum()
-    if null_cols > 0:
-        drop[data[data.isnull()]]
+    if null_cols.any() > 0:
+        # eliminarmos filas con nulos
+        data.dropna(axis='index')
+        
+        # eliminarmos columnas con nulos
+        data.dropna(axis='columns')
+
     return data
 
 def data_wrangling_outliers(data):
@@ -59,7 +63,7 @@ def data_wrangling_duplicates(data):
     after = len(data)
     print('Number of duplicate records dropped: ', str(before - after))
     return data
-    
+
 # # Step 3 : Data Wrangling
 
 def data_analysis_reporting(data):
@@ -68,8 +72,6 @@ def data_analysis_reporting(data):
     print("============== ")
     
     ls = []
-    ls2 = ['Economy (GDP per Capita)', 'Family', 'Health (Life Expectancy)', 'Freedom', 'Trust (Government Corruption)','Generosity']
-
     ls.append(data['Happiness Score'].corr(data['Economy (GDP per Capita)']))
     ls.append(data['Happiness Score'].corr(data['Family']))
     ls.append(data['Happiness Score'].corr(data['Health (Life Expectancy)']))
@@ -77,11 +79,12 @@ def data_analysis_reporting(data):
     ls.append(data['Happiness Score'].corr(data['Trust (Government Corruption)']))
     ls.append(data['Happiness Score'].corr(data['Generosity']))
 
-
 # # Step 4 : Data Reporting
-
+    ls2 = ['Economy (GDP per Capita)', 
+           'Family', 'Health (Life Expectancy)', 
+           'Freedom', 'Trust (Government Corruption)',
+           'Generosity']
     counter = 0
-
     for i in ls:
         if i > 0.75:    
             print(ls2[counter] + " = very relevant")
@@ -93,18 +96,25 @@ def data_analysis_reporting(data):
         
     return data
 
+# # Step 5 : Save clean CSV 
 
-# # Step 5 : Automated clean CSV each year
+def clean_csv(data):
+    data = data.to_csv('./{}_happinness.csv'.format(year), index=False)
+    return data 
+
+# # Step 6 : Execute pipeline
 
 if __name__ == "__main__":
-    data = data_acquisition(data)
+    
+    year = input('Year: ')
+    filename = './{}.csv'.format(year)
+    
+    data = data_acquisition(filename)
     data = data_wrangling_null(data)
     data = data_wrangling_outliers(data)
     data = data_wrangling_duplicates(data)
     data = data_analysis_reporting(data)
-
-    num_days = [360]
-    for day in num_days:
-        data.to_csv('./2015_happinness.csv', index=False)
+    data = data_analysis_reporting(data)
+    data = clean_csv(data)
 
 
