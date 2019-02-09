@@ -18,11 +18,11 @@ Overall the project consists of a series of steps as outlined below.
 
 # # Step 2 : Check whether Wikipedia has a webpage for each firm through API
 
-# # Step 2 : Open Wikipedia if the firm has a specific webpage
+# # Step 2 : Get a summary from Wikipedia page of specific firm 
 
-# # Step 3 : Combine both data sources horizontally so that each row has a column in which website is introduced
+# # Step 3 : Combine both data sources horizontally so that each row has a column in which summary of company is introduced
 
-# # Step 4 : Export as clean file
+# # Step 4 : Export as clean CSV file
 ---
 
 ## References
