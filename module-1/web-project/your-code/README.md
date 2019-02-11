@@ -7,6 +7,7 @@ The goal of this project is to choose both an API to obtain data from and a web 
 In this project we will investigate the biggest venture capital firms in the world, through a variety of measures such as location and assets owned. Meanwhile, we will link this information to an API that allows people to find out more details about each company.
 
 Overall the project consists of a series of steps as outlined below. 
+
 ---
 ## Intro: Understand data
 
